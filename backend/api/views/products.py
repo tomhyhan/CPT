@@ -12,4 +12,9 @@ class ProductList(generics.ListAPIView):
   filterset_class = ProductFilter
 
   def get_queryset(self):
-    return ProductModel.objects.all()
+    # This avoids extra database hits by pre-joining category and caching the result to make a query from tag model
+    return (
+      ProductModel.objects
+      .select_related("category")
+      .prefetch_related("tag")
+    )
