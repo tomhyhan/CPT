@@ -3,11 +3,8 @@ export default class ProductService {
     this.apiClient = apiClient
   }
 
-  async products(filter) {
-    const params = {...filter}
-    if (params.category?.id) params.category = params.category.id
-
-    const res = await this.apiClient.products({params:params})
+  async products(queryFilter) {
+    const res = await this.apiClient.products({params : queryFilter})
     return res.data
   }
 
