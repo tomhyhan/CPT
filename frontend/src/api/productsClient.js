@@ -12,4 +12,14 @@ export default class ProductClient {
     // Get: /api/products/
     return this.httpClient.get("products", params)
   }
+
+  async categories() {
+    // Get: /api/categories/
+    return this.httpClient.get("categories")
+  }
+
+  async tags() {
+    // Get: /api/tags/
+    return this.httpClient.get("tags")
+  }
 } 

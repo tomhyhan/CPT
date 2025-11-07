@@ -3,9 +3,18 @@ export default class ProductService {
     this.apiClient = apiClient
   }
 
-  async products() {
-    // returns products
-    const res = await this.apiClient.products()
+  async products(filter) {
+    const res = await this.apiClient.products({params : filter})
+    return res.data
+  }
+
+  async categories() {
+    const res = await this.apiClient.categories("categories")
+    return res.data
+  }
+
+  async tags() {
+    const res = await this.apiClient.tags("tags")
     return res.data
   }
 }

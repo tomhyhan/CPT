@@ -3,7 +3,7 @@ import ProductClient from '../api/productsClient'
 import ProductService from '../api/productService'
 
 const ProductContext = createContext()
-// single instance if product service
+// single instance of product api service
 const client = new ProductClient()
 const productApi = new ProductService(client)
 
