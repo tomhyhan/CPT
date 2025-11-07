@@ -13,15 +13,18 @@ export default function ProductList() {
   const categoryQuery = useQuery({queryKey: ["categories"], queryFn: () => productApi.categories()} )
   const tagQuery = useQuery({queryKey: ["tags"], queryFn: () => productApi.tags()} )
 
-  if (productQuery.isLoading | categoryQuery.isLoading | tagQuery.isLoading) return <div>loading...</div>
 
-  console.log(categoryQuery.data, tagQuery.data)
+  const isLoading = productQuery.isLoading | categoryQuery.isLoading | tagQuery.isLoading
+  if (isLoading) return <div>loading...</div>
+
+  const isError = productQuery.isError | categoryQuery.isError | tagQuery.isError 
+  if (isError) return <div>Something is wrong...</div>
 
   return (
     <div>
     {productQuery.data.map(product => (
       <div>
-        <p>{product.title}</p>
+        <p >{product.title}</p>
       </div>
   ))}    
   </div>
