@@ -4,6 +4,7 @@ export default class ProductService {
   }
 
   async products() {
+    // returns products
     const res = await this.apiClient.products()
     return res.data
   }
