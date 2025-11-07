@@ -5,35 +5,35 @@
 If you have Docker on your system, follow these steps:
 
 ```sh
-  git clone https://github.com/tomhyhan/CPT.git
-  cd CPT
+git clone https://github.com/tomhyhan/CPT.git
+cd CPT
 ```
 ```sh
-  docker compose up --build
+docker compose up --build
 ```
 
 **To clean up after:**
 ```sh
-  docker compose down --volumes --remove-orphans --rmi all
+docker compose down --volumes --remove-orphans --rmi all
 ```
 
 ### Without Docker
 ```sh
-  git clone https://github.com/tomhyhan/CPT.git
-  cd CPT
+git clone https://github.com/tomhyhan/CPT.git
+cd CPT
 ```
 ```sh
-  cd backend
-  python -m venv venv
-  source ./venv/bin/activate  # On Linux
-  pip install -r requirements.txt
-  python manage.py runserver
+cd backend
+python -m venv venv
+source ./venv/bin/activate  # On Linux
+pip install -r requirements.txt
+python manage.py runserver
 ```
 
 ```sh
-  cd frontend
-  npm install
-  npm run dev
+cd frontend
+npm install
+npm run dev
 ```
 
 ### Access app
