@@ -10,7 +10,7 @@ export default function ProductList() {
   })
 
   // These requests run in parallel 
-  const productQuery = useQuery({queryKey: ["products"], queryFn: () => productApi.products()} )
+  const productQuery = useQuery({queryKey: ["products", filter], queryFn: () => productApi.products(filter)} )
   const categoryQuery = useQuery({queryKey: ["categories"], queryFn: () => productApi.categories()} )
   const tagQuery = useQuery({queryKey: ["tags"], queryFn: () => productApi.tags()} )
 
