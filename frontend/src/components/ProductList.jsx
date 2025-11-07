@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { useProductApi } from '../context/ProductApiContext'
 import { useState } from 'react'
+import Categories from './Categories'
 
 export default function ProductList() {
   const {productApi} = useProductApi()
-  const {filter, setFilter} = useState({
+  const [filter, setFilter] = useState({
     category: null,
   })
 
@@ -20,8 +21,18 @@ export default function ProductList() {
   const isError = productQuery.isError | categoryQuery.isError | tagQuery.isError 
   if (isError) return <div>Something is wrong...</div>
 
+  const handleCategoryClick = (category) => {
+    console.log(category)
+    setFilter({...filter, category})
+  }
+
   return (
     <div>
+    <Categories 
+      categories={categoryQuery.data} 
+      selectedCategory={filter.category}
+      onCategoryClick={handleCategoryClick}
+    />
     {productQuery.data.map(product => (
       <div>
         <p >{product.title}</p>
