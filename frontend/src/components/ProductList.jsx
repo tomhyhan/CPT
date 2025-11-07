@@ -14,7 +14,9 @@ export default function ProductList() {
   const [search, setSearch] = useState("")
   const [value] = useDebounce(search, 300);
 
-  // This code was assisted by AI.
+  // Using queryFilter was assisted by AI.
+  // I originally tried to build query params inside 
+  // ProductService.js, but this seems better.
   const queryFilter = useMemo(() => {
     return {
       category: category?.id || null, 
@@ -27,6 +29,7 @@ export default function ProductList() {
   // These requests run in parallel 
   // Product Query refetches items when queryFilter changes
   const productQuery = useQuery({queryKey: ["products", queryFilter], queryFn: () => productApi.products(queryFilter), placeholderData: keepPreviousData } )
+  // add staleTime to ensure we don't refetch initial data on every render
   const categoryQuery = useQuery({queryKey: ["categories"], queryFn: () => productApi.categories(), staleTime: 1000 * 60 * 5} )
   const tagQuery = useQuery({queryKey: ["tags"], queryFn: () => productApi.tags(), staleTime: 1000 * 60 * 5} )
 

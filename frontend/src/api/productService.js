@@ -4,6 +4,7 @@ export default class ProductService {
   }
 
   async products(queryFilter) {
+    // simply pass queryFilter object to params
     const res = await this.apiClient.products({params : queryFilter})
     return res.data
   }
